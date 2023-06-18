@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	basic.VariablePrimitive()
+	basic.VariableNonPrimitive()
 }

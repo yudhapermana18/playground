@@ -1,8 +1,39 @@
 package basic
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func VariablePrimitive() {
+	// declaration var
+
+	// standart
+	var age int
+	var si int = 1
+
+	// multiple declaration
+	var sj, sk, sl int = 1, 2, 3
+	var (
+		sn string = "hello"
+		sm []byte = []byte("world")
+	)
+
+	// short hand declaration
+	so := 4
+	sp := 'a'
+
+	// short hand multiple declaration
+	su, sy := 4, 'a'
+
+	// constant
+	const PI float32 = 3.14
+	const pi float32 = 3.14
+
+	fmt.Println(age, si, sj, sk, sl, sn, string(sm), so, sp, su, sy, PI, pi)
+	fmt.Println(reflect.TypeOf(su))
+	fmt.Println(reflect.TypeOf(sy))
+
 	var x interface{}
 
 	// numeric types
@@ -66,41 +97,43 @@ func VariablePrimitive() {
 	uptr = 0xc82000c290
 	r = '\n'
 
-	s = "Hello"
+	s = "Hello Brother"
 	p = &i
 
 	fmt.Println("---After assigment---")
 
-	fmt.Printf("interface: %v\n", x)
-	fmt.Printf("integer: %v\n", i)
-	fmt.Printf("integer 8: %v\n", i8)
-	fmt.Printf("integer 16: %v\n", i16)
-	fmt.Printf("integer 32: %v\n", i32)
-	fmt.Printf("integer 64: %v\n", i64)
-	fmt.Printf("unsigned integer: %v\n", ui)
-	fmt.Printf("unsigned integer 8: %v\n", ui8)
-	fmt.Printf("unsigned integer 16: %v\n", ui16)
-	fmt.Printf("unsigned integer 32: %v\n", ui32)
-	fmt.Printf("unsigned integer 64: %v\n", ui64)
-	fmt.Printf("float 32: %v\n", f32)
-	fmt.Printf("float 64: %v\n", f64)
-	fmt.Printf("complex 64: %v\n", c64)
-	fmt.Printf("complex 128: %v\n", c128)
-	fmt.Printf("byte: %v\n", b)
+	fmt.Printf("interface: %v, size: %d\n", x, reflect.TypeOf(x).Size())
+	fmt.Printf("integer: %v, size: %d\n", i, reflect.TypeOf(i).Size())
+	fmt.Printf("integer 8: %v, size: %d\n", i8, reflect.TypeOf(i8).Size())
+	fmt.Printf("integer 16: %v, size: %d\n", i16, reflect.TypeOf(i16).Size())
+	fmt.Printf("integer 32: %v, size: %d\n", i32, reflect.TypeOf(i32).Size())
+	fmt.Printf("integer 64: %v, size: %d\n", i64, reflect.TypeOf(i64).Size())
+	fmt.Printf("unsigned integer: %v, size: %d\n", ui, reflect.TypeOf(ui).Size())
+	fmt.Printf("unsigned integer 8: %v, size: %d\n", ui8, reflect.TypeOf(ui8).Size())
+	fmt.Printf("unsigned integer 16: %v, size: %d\n", ui16, reflect.TypeOf(ui16).Size())
+	fmt.Printf("unsigned integer 32: %v, size: %d\n", ui32, reflect.TypeOf(ui32).Size())
+	fmt.Printf("unsigned integer 64: %v, size: %d\n", ui64, reflect.TypeOf(ui64).Size())
+	fmt.Printf("float 32: %v, size: %d\n", f32, reflect.TypeOf(f32).Size())
+	fmt.Printf("float 64: %v, size: %d\n", f64, reflect.TypeOf(f64).Size())
+	fmt.Printf("complex 64: %v, size: %d\n", c64, reflect.TypeOf(c64).Size())
+	fmt.Printf("complex 128: %v, size: %d\n", c128, reflect.TypeOf(c128).Size())
+	fmt.Printf("byte: %v, size: %d\n", b, reflect.TypeOf(b).Size())
 	fmt.Printf("uninterpreted pointer: %d\n", uptr)
-	fmt.Printf("rune: %v\n", r)
+	fmt.Printf("rune: %v, size: %d\n", r, reflect.TypeOf(r).Size())
 
-	fmt.Printf("string: %v\n", s)
-	fmt.Printf("pointer: %v\n", p)
+	fmt.Printf("string: %v, size: %d\n", s, reflect.TypeOf(s).Size())
+	fmt.Printf("pointer: %v, size: %d\n", p, reflect.TypeOf(p).Size())
 
-	var by []byte = []byte("Hello Brother")
+	var by []byte = []byte("Hello Brother hood")
 	var rn []rune = []rune{1572, 100}
 	var st string
 	for _, v := range by {
 		st += string(v)
 	}
 
-	fmt.Println(st)
+	fmt.Printf("rune: %s, size: %d\n", by, reflect.TypeOf(by).Size())
+
+	fmt.Println("letter of words", string(st[len(st)-1]))
 
 	fmt.Println(by)
 	fmt.Printf("%c\n", by)
