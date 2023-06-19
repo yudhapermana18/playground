@@ -131,7 +131,7 @@ func VariablePrimitive() {
 		st += string(v)
 	}
 
-	fmt.Printf("rune: %s, size: %d\n", by, reflect.TypeOf(by).Size())
+	fmt.Printf("bytes: %s, size: %d\n", by, reflect.TypeOf(by).Size())
 
 	fmt.Println("letter of words", string(st[len(st)-1]))
 

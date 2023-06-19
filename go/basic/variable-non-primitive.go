@@ -45,6 +45,7 @@ func VariableNonPrimitive() {
 	fmt.Println(reflect.TypeOf(ain).Size())
 	fmt.Println(reflect.TypeOf(ain).Kind())
 
+	// for range copy of array to value, depend size of element array
 	// for _, v := range amax {
 	// 	go fmt.Println(v)
 	// }
@@ -52,6 +53,7 @@ func VariableNonPrimitive() {
 	// for i := 0; i < len(amax); i++ {
 	// 	fmt.Println(amax[i])
 	// }
+
 	maxi := math.MaxInt64
 	fmt.Println(maxi)
 
@@ -61,14 +63,6 @@ func VariableNonPrimitive() {
 		fmt.Println("type data v", reflect.TypeOf(v))
 		fmt.Println("index", i+1, "address", &v)
 	}
-
-	// for j := 0; j < maxi; j++ {
-	// 	h := j
-	// 	if h > 2 {
-	// 		h = 2
-	// 	}
-	// 	go fmt.Println("index", h+1, "address", &a[h])
-	// }
 
 	/*
 		Slice
