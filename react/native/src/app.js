@@ -33,6 +33,8 @@ export default function Game() {
 							boardRow;
 						}
 					})}
+
+					<h1>Halow</h1>
 				</div>
 				<div className="game-info">
 					<ol>
