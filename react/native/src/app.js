@@ -1,49 +1,43 @@
 import { useState } from "react";
+import Board from "./board";
 
 export default function Game() {
 	const [history, setHistory] = useState([Array(9).fill(null)]);
-	const currentSquare = history[history.length - 1];
+	const [currentSquare, setCurrentSquare] = useState(0);
+	const xIsNext = currentSquare % 2 === 0;
 
-	let squareRows = [];
-	let boardRows = [];
-
-	for (let i = 0; i < currentSquare.length; i++) {
-		squareRows.push(currentSquare[i]);
-		if ((i + 1) % 3 === 0) {
-			const squares = squareRows.map((square, index) => {
-				return (
-					<div className="square" key={"sqaure" + index}>
-						{square}
-					</div>
-				);
-			});
-			const boardRow = <div className="board-row">{squares}</div>;
-			squareRows = [];
-			boardRows.push(boardRow);
-		}
+	function onPlay(nextSquare) {
+		const historyNext = [...history.slice(0, currentSquare + 1), nextSquare];
+		setHistory(historyNext);
+		setCurrentSquare(historyNext.length - 1);
 	}
+
+	function onHistoryMove(historyMove) {
+		setCurrentSquare(historyMove);
+	}
+
+	const historyMoves = history.map((_, move) => {
+		return (
+			<li key={move}>
+				<button onClick={() => onHistoryMove(move)}>
+					{move > 0 ? "Go to move #" + move : "Go to game start"}
+				</button>
+			</li>
+		);
+	});
 
 	return (
 		<>
 			<div className="game">
 				<div className="game-board">
-					<div className="status">Next Player: X</div>
-					{boardRows.map((boardRow) => {
-						{
-							boardRow;
-						}
-					})}
-
-					<h1>Halow</h1>
+					<Board
+						squares={history[currentSquare]}
+						xIsNext={xIsNext}
+						handlePlay={onPlay}
+					/>
 				</div>
 				<div className="game-info">
-					<ol>
-						<li>
-							<button onClick={() => console.log("button clicked")}>
-								Go to game start
-							</button>
-						</li>
-					</ol>
+					<ol>{historyMoves}</ol>;
 				</div>
 			</div>
 		</>
